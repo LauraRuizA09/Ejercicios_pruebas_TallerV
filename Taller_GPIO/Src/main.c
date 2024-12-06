@@ -164,6 +164,8 @@ uint8_t Velitas(void){
 
 	}
 
+	contador = 0;
+
 
 	}
 

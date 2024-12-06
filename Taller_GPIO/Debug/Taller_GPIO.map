@@ -1623,12 +1623,12 @@ LOAD /opt/st/stm32cubeide_1.10.1/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_macro   0x0000000000002798       0xff ./Src/sysmem.o
  .debug_macro   0x0000000000002897      0x23b ./Src/sysmem.o
 
-.debug_line     0x0000000000000000     0x1818
+.debug_line     0x0000000000000000     0x181a
  .debug_line    0x0000000000000000      0x679 ./Src/gpio_driver_hal.o
- .debug_line    0x0000000000000679      0x4a1 ./Src/main.o
- .debug_line    0x0000000000000b1a      0x7c2 ./Src/syscalls.o
- .debug_line    0x00000000000012dc      0x4b8 ./Src/sysmem.o
- .debug_line    0x0000000000001794       0x84 ./Startup/startup_stm32f411retx.o
+ .debug_line    0x0000000000000679      0x4a3 ./Src/main.o
+ .debug_line    0x0000000000000b1c      0x7c2 ./Src/syscalls.o
+ .debug_line    0x00000000000012de      0x4b8 ./Src/sysmem.o
+ .debug_line    0x0000000000001796       0x84 ./Startup/startup_stm32f411retx.o
 
 .debug_str      0x0000000000000000     0xa0a9
  .debug_str     0x0000000000000000     0x499f ./Src/gpio_driver_hal.o
