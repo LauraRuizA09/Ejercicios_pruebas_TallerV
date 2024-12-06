@@ -24,6 +24,11 @@ GPIO_Handler_t pinLed8 = {0}; //PINA5
 GPIO_Handler_t userBtn = {0}; //PINA5
 
 uint8_t contador = 0;
+uint8_t flag = 0; //para advertir al programa que si se ejecuto
+
+
+
+uint8_t Velitas(void);
 /*
  * The main function, where everything happens.
  */
@@ -89,24 +94,80 @@ int main(void)
 
     while (1) {
 
-    	if(contador == 1){
-    		gpio_WritePin(&pinLed5, GPIO_PIN_RESET);
-    		contador++;
-    	}else if(contador == 2){
-    		gpio_WritePin(&pinLed6, GPIO_PIN_SET);
-    		contador++;
-    	}else if(contador == 3){
-    		gpio_WritePin(&pinLed7, GPIO_PIN_SET);
-    		contador++;
-    	}else{
-    		gpio_WritePin(&pinLed5,  GPIO_PIN_SET);
-    		gpio_WritePin(&pinLed6,  GPIO_PIN_RESET);
-    		contador =1;
+    	if(!flag){
 
+    		flag = Velitas();
     	}
+    	else{
+
+    		flag = Velitas();
+    	}
+
     }
 
+
     return 0;
+}
+
+
+
+//Funcion para prender leds
+
+uint8_t Velitas(void){
+
+	switch(contador){
+
+	case 0:
+	{
+		gpio_WritePin(&pinLed5, 1);
+		contador++;
+		break;
+	}
+	case 1:
+	{
+		gpio_WritePin(&pinLed6, 1);
+		gpio_WritePin(&pinLed5, 0);
+		contador++;
+		break;
+		}
+	case 2:
+	{
+		gpio_WritePin(&pinLed7, 1);
+		gpio_WritePin(&pinLed6, 0);
+		contador++;
+		break;
+		}
+	case 3:
+	{
+		gpio_WritePin(&pinLed8, 1);
+		gpio_WritePin(&pinLed7, 0);
+		contador++;
+		break;
+	}
+
+
+	default:{
+
+		gpio_WritePin(&pinLed5, 1);
+		gpio_WritePin(&pinLed6, 1);
+		gpio_WritePin(&pinLed7, 1);
+		gpio_WritePin(&pinLed8, 1);
+
+		for(uint32_t i = 0; i<1250000; i++);  //Delay un tiempo de espera de 1 segundo
+
+		gpio_WritePin(&pinLed5, 0);
+		gpio_WritePin(&pinLed6, 0);
+		gpio_WritePin(&pinLed7, 0);
+		gpio_WritePin(&pinLed8, 0);
+
+		break;
+
+	}
+
+
+	}
+
+	return 1;
 }
 
 /*
